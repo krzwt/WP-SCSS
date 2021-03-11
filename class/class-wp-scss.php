@@ -211,7 +211,7 @@ class Wp_Scss {
    *                      so it can be used in a url, not path
    */
   public function enqueue_files($base_folder_path, $css_folder) {
-
+    $base_folder_path = str_replace('\\', '/', $base_folder_path);
     $relative_path = explode(get_home_path(), $base_folder_path)[1];
     foreach( new DirectoryIterator($this->css_dir) as $stylesheet ) {
       if ( pathinfo($stylesheet->getFilename(), PATHINFO_EXTENSION) == 'css' ) {
